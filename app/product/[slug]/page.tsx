@@ -1,3 +1,4 @@
+import AddToCart from "@/app/components/AddToCart";
 import ImageGallery from "@/app/components/ImageGallery";
 import { client } from "@/app/lib/sanity";
 import { fullProduct } from "@/app/types/interface";
@@ -68,10 +69,19 @@ export default async function ProductPage({
               <span className="text-sm ">2-4 Day Shipping</span>
             </div>
             <div className="flex gap-2.5">
-              <Button>Add To Cart</Button>
+              <AddToCart
+                key={data._id}
+                name={data.name}
+                price={data.price}
+                image={data.images[0]}
+                currency="USD"
+                description={data.description}
+              />
               <Button variant={"secondary"}>Checkout now</Button>
             </div>
-            <p className="text-gray-500 mt-10">{data.description}</p>
+            <p className="text-gray-500 mt-10 tracking-wide">
+              {data.description}
+            </p>
           </div>
         </div>
       </div>
